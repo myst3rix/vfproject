@@ -99,7 +99,7 @@ Create Table arbeitsplatz
 aID int not null,
 schicht varchar(30),
 rüstzeit int,
-schichtanteil int,
+schichtanteil varchar(15),
 statID int,
 Primary key (aID),
 FOREIGN KEY (statID) REFERENCES station(statID)
