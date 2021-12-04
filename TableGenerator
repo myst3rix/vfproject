@@ -1,3 +1,5 @@
+Create Database virtuell_fabric;
+
 Create Table beschaffung
 (
 beschaffungsID int not null,
@@ -18,12 +20,23 @@ Primary key (lieferID),
 FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID)
 );
 
+Create Table bestellung
+(
+bestellID int not null,
+produkt int,
+bestellmenge varchar(30),
+datum Date,
+Primary key (bestellID)
+);
+
 Create Table auftrag
 (
 auID int not null,
 fertnr int,
 transportnr int,
-Primary key (auID)
+bestellID int,
+Primary key (auID),
+FOREIGN KEY (bestellID) REFERENCES Bestellung(bestellID)
 );
 
 Create Table lager
@@ -47,6 +60,17 @@ FOREIGN KEY (auID) REFERENCES auftrag(auID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID)
 );
 
+Create Table produktbestand
+(
+pbID int not null,
+produktID int,
+lagID int,
+menge int,
+Primary key (pbID),
+FOREIGN KEY (produktID) REFERENCES produkt(produktID),
+FOREIGN KEY (lagID) REFERENCES lager(lagID)
+);
+
 Create Table material
 (
 materialID int not null,
@@ -60,6 +84,17 @@ FOREIGN KEY (lagID) REFERENCES lager(lagID),
 FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID)
 );
 
+Create Table materialbestand
+(
+mbID int not null,
+materialID int,
+lagID int,
+menge int,
+Primary key (mbID),
+FOREIGN KEY (materialID) REFERENCES material(materialID),
+FOREIGN KEY (lagID) REFERENCES lager(lagID)
+);
+
 Create Table charge
 (
 chID int not null,
@@ -71,6 +106,17 @@ produktID int,
 lagID int,
 Primary key (chID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID),
+FOREIGN KEY (lagID) REFERENCES lager(lagID)
+);
+
+Create Table chargebestand
+(
+cbID int not null,
+chargeID int,
+lagID int,
+menge int,
+Primary key (cbID),
+FOREIGN KEY (chargeID) REFERENCES charge(chargeID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID)
 );
 
@@ -94,15 +140,33 @@ Primary key (statID),
 FOREIGN KEY (werkID) REFERENCES werkhalle(werkID)
 );
 
+Create Table schicht
+(
+schichtID int not null,
+schichtbeginn time,
+schichtende time,
+schichtname varchar(20),
+Primary key (schichtID)
+);
+
 Create Table arbeitsplatz
 (
 aID int not null,
-schicht varchar(30),
+kuezel varchar(20),
 rüstzeit int,
-schichtanteil varchar(15),
 statID int,
 Primary key (aID),
 FOREIGN KEY (statID) REFERENCES station(statID)
+);
+
+Create Table arbeitsplatz_nm_schicht
+(
+aID int not null,
+schichtID int not null,
+Primary key (aID),
+Primary key (schichtID),
+FOREIGN KEY (aID) REFERENCES arbeitsplatz(aID),
+FOREIGN KEY (schichtID) REFERENCES schicht(schichtID)
 );
 
 Create Table mitarbeiter
