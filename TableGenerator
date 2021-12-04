@@ -260,8 +260,6 @@ Create Table produkt_nm_maschine
 (
 maschineID int not null,
 produktID int not null,
-produktname varchar(30),
-`type` varchar(20),
 Primary key (maschineID,produktID),
 FOREIGN KEY (maschineID) REFERENCES maschine(maschineID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
