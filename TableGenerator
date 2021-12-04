@@ -116,7 +116,7 @@ chargeID int,
 lagID int,
 menge int,
 Primary key (cbID),
-FOREIGN KEY (chargeID) REFERENCES charge(chargeID),
+FOREIGN KEY (chargeID) REFERENCES charge(chID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID)
 );
 
@@ -164,8 +164,7 @@ Create Table arbeitsplatz_nm_schicht
 aID int not null,
 schichtID int not null,
 Primary key (aID),
-Primary key (schichtID),
-FOREIGN KEY (aID) REFERENCES arbeitsplatz(aID),
+Primary key (schichtID,aID),
 FOREIGN KEY (schichtID) REFERENCES schicht(schichtID)
 );
 
