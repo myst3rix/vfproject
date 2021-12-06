@@ -60,6 +60,15 @@ FOREIGN KEY (auID) REFERENCES auftrag(auID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID)
 );
 
+Create Table rezeptur
+(
+rezepturID int not null,
+produktname varchar(10),
+produktID int,
+Primary key (lagID),
+FOREIGN KEY (produktID) REFERENCES produkt(produktID)
+);
+
 Create Table produktbestand
 (
 pbID int not null,
@@ -81,7 +90,8 @@ beschaffungsID int,
 Primary key (materialID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID),
-FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID)
+FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID),
+FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
 );
 
 Create Table materialbestand
@@ -193,6 +203,7 @@ Create Table history
 hID int not null,
 datum date,
 ressource varchar(20),
+zeit time,
 Primary key (hID)
 );
 
@@ -204,6 +215,7 @@ ressource varchar(20),
 warnanschläge int,
 energielast int,
 hID int,
+timestamp time,
 Primary key (datenID),
 FOREIGN KEY (hID) REFERENCES history(hID)
 );
@@ -227,7 +239,8 @@ tID int,
 statID int,
 Primary key (maschineID),
 FOREIGN KEY (tID) REFERENCES maschinentyp(tID),
-FOREIGN KEY (statID) REFERENCES station(statID)
+FOREIGN KEY (statID) REFERENCES station(statID),
+FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
 );
 
 Create Table sensor
