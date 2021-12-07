@@ -23,19 +23,17 @@ FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID)
 Create Table bestellung
 (
 bestellID int not null,
-produkt int,
-bestellmenge varchar(30),
 datum Date,
 Primary key (bestellID)
 );
 
-Create Table auftrag
+Create Table bestellliste
 (
-auID int not null,
-fertnr int,
-transportnr int,
+listenID int not null,
+produktname varchar(30),
+bestellmenge int,
 bestellID int,
-Primary key (auID),
+Primary key (listenID, produktname),
 FOREIGN KEY (bestellID) REFERENCES Bestellung(bestellID)
 );
 
@@ -52,20 +50,19 @@ Create Table produkt
 (
 produktID int not null,
 produktname varchar(30),
-menge int,
-auID int,
-lagID int,
+preis float,
+listenID int,
 Primary key (produktID),
-FOREIGN KEY (auID) REFERENCES auftrag(auID),
-FOREIGN KEY (lagID) REFERENCES lager(lagID)
+FOREIGN KEY (listenID) REFERENCES bestellliste(listenID),
 );
 
 Create Table rezeptur
 (
 rezepturID int not null,
+stoff varchar(30),
 produktname varchar(10),
 produktID int,
-Primary key (lagID,produktID),
+Primary key (lagID,stoff),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
 );
 
@@ -85,11 +82,10 @@ Create Table material
 materialID int not null,
 stoff varchar(30),
 produktID int,
-lagID int,
+rezepturID int,
 beschaffungsID int,
 Primary key (materialID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID),
-FOREIGN KEY (lagID) REFERENCES lager(lagID),
 FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID),
 FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
 );
@@ -102,31 +98,6 @@ lagID int,
 menge int,
 Primary key (mbID),
 FOREIGN KEY (materialID) REFERENCES material(materialID),
-FOREIGN KEY (lagID) REFERENCES lager(lagID)
-);
-
-Create Table charge
-(
-chID int not null,
-lagerort varchar(30),
-eingang varchar(30),
-ausgang varchar(30),
-`status` varchar(30),
-produktID int,
-lagID int,
-Primary key (chID),
-FOREIGN KEY (produktID) REFERENCES produkt(produktID),
-FOREIGN KEY (lagID) REFERENCES lager(lagID)
-);
-
-Create Table chargebestand
-(
-cbID int not null,
-chargeID int,
-lagID int,
-menge int,
-Primary key (cbID),
-FOREIGN KEY (chargeID) REFERENCES charge(chID),
 FOREIGN KEY (lagID) REFERENCES lager(lagID)
 );
 
