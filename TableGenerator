@@ -53,7 +53,7 @@ produktname varchar(30),
 preis float,
 listenID int,
 Primary key (produktID),
-FOREIGN KEY (listenID) REFERENCES bestellliste(listenID),
+FOREIGN KEY (listenID) REFERENCES bestellliste(listenID)
 );
 
 Create Table rezeptur
@@ -62,7 +62,7 @@ rezepturID int not null,
 stoff varchar(30),
 produktname varchar(10),
 produktID int,
-Primary key (lagID,stoff),
+Primary key (rezepturID,stoff),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
 );
 
@@ -144,9 +144,9 @@ Create Table arbeitsplatz_nm_schicht
 (
 aID int not null,
 schichtID int not null,
-Primary key (aID),
 Primary key (schichtID,aID),
-FOREIGN KEY (schichtID) REFERENCES schicht(schichtID)
+FOREIGN KEY (schichtID) REFERENCES schicht(schichtID),
+FOREIGN KEY (aID) REFERENCES arbeitsplatz(aID)
 );
 
 Create Table mitarbeiter
@@ -205,6 +205,7 @@ störung varchar(20),
 stückzahl int,
 maxLast int,
 `status` varchar(20),
+rezepturID int,
 sID int,
 tID int,
 statID int,
