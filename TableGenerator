@@ -65,7 +65,7 @@ Create Table rezeptur
 rezepturID int not null,
 produktname varchar(10),
 produktID int,
-Primary key (lagID),
+Primary key (lagID,produktID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
 );
 
