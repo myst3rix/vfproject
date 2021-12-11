@@ -1,0 +1,5 @@
+tID, type, anzahl, wartungsbedürftig
+1, Verpackung, 25,
+2, Elektronik, 20, 1 
+3, Zusammensetzung, 20, 1
+4, Kontrolle, 15,
