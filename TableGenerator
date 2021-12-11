@@ -81,11 +81,9 @@ Create Table material
 (
 materialID int not null,
 stoff varchar(30),
-produktID int,
 rezepturID int,
 beschaffungsID int,
 Primary key (materialID),
-FOREIGN KEY (produktID) REFERENCES produkt(produktID),
 FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID),
 FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
 );
