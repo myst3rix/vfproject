@@ -223,7 +223,7 @@ ressource varchar(20),
 warnanschläge int,
 energielast int,
 hID int,
-timestamp time,
+timestamp datetime,
 sID int,
 Primary key (datenID),
 FOREIGN KEY (hID) REFERENCES history(hID),
@@ -233,8 +233,8 @@ FOREIGN KEY (sID) REFERENCES sensor(sID)
 Create Table ausfall
 (
 ausfallID int not null,
-startzeit date,
-endzeit date,
+startzeit datetime,
+endzeit datetime,
 maschineID int,
 Primary key (ausfallID),
 FOREIGN KEY (maschineID) REFERENCES maschine(maschineID)
