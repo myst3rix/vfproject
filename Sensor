@@ -1,0 +1,12 @@
+sID, seriennummer, minvolt, maxvolt, hersteller, maschineID, datenID
+100, 10011, 3, 6, Balluff, 1000,
+101, 10012, 3, 6, Baumer Group, 1001,
+102, 10013, 2, 6, Berthold Technologies, 1002,
+103, 10014, 3, 5, Balluff, 1003,
+104, 10015, 3, 6, Berthold Technologies, 1004,
+105, 10016, 3, 6, Baumer Group, 1005,
+106, 10017, 2, 5, Berthold Technologies, 1006,
+107, 10018, 2, 5, Balluff, 1007,
+108, 10019, 3, 5, Baumer Group, 1008,
+109, 10020, 3, 6, Balluff, 1009,
+110, 10021, 4, 7, Berthold Technologies, 1010,
