@@ -61,6 +61,7 @@ Create Table rezeptur
 rezepturID int not null,
 stoff varchar(30),
 produktname varchar(10),
+menge int,
 produktID int,
 Primary key (rezepturID,stoff),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
@@ -85,6 +86,15 @@ rezepturID int,
 beschaffungsID int,
 Primary key (materialID),
 FOREIGN KEY (beschaffungsID) REFERENCES beschaffung(beschaffungsID),
+FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
+);
+
+Create Table rezeptur_nm_material
+(
+materialID int not null,
+rezepturID int,
+Primary key (materialID, rezepturID),
+FOREIGN KEY (materialID) REFERENCES material(materialID),
 FOREIGN KEY (rezepturID) REFERENCES rezeptur(rezepturID)
 );
 
