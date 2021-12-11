@@ -178,19 +178,6 @@ zeit time,
 Primary key (hID)
 );
 
-Create Table datenerfassung
-(
-datenID int not null,
-durchlaufzeit int,
-ressource varchar(20),
-warnanschläge int,
-energielast int,
-hID int,
-timestamp time,
-Primary key (datenID),
-FOREIGN KEY (hID) REFERENCES history(hID)
-);
-
 Create Table maschine
 (
 maschineID int not null,
@@ -225,8 +212,22 @@ hersteller varchar(20),
 maschineID int,
 datenID int,
 Primary key (sID),
-FOREIGN KEY (maschineID) REFERENCES maschine(maschineID),
-FOREIGN KEY (datenID) REFERENCES datenerfassung(datenID)
+FOREIGN KEY (maschineID) REFERENCES maschine(maschineID)
+);
+
+Create Table datenerfassung
+(
+datenID int not null,
+durchlaufzeit int,
+ressource varchar(20),
+warnanschläge int,
+energielast int,
+hID int,
+timestamp time,
+sID int,
+Primary key (datenID),
+FOREIGN KEY (hID) REFERENCES history(hID),
+FOREIGN KEY (sID) REFERENCES sensor(sID)
 );
 
 Create Table ausfall
