@@ -1,13 +1,14 @@
 statID,stationsname,mitarbeiteranzahl,maschinenanzahl,werkID
-1,motorik,25,5,1
-2,fahrwerk,25,3,1
-3,karosserie,25,3,1
-4,abgas,20,3,1
-5,bremsanlage,20,1,1
-6,beleuchtung,15,1,1
-7,lenkung,10,1,1
-8,diagnose,15,1,2
-9,elektronik,30,3,2
-10,heizung,10,2,2
-11,zubehör,20,3,2
-12,glas,20,3,3
+1, motorik, 25, 5, 10003
+2, fahrwerk, 25, 3, 10003
+3, abgas, 20, 3, 10003
+4, bremsanlage, 20, 1, 10003
+5, karosserie, 25, 3, 10001
+6, beleuchtung, 15, 1, 10002
+7, lenkung, 10, 1, 10003
+8, diagnose, 15, 1, 10002
+9, elektronik, 30, 3, 10002
+10, heizung, 10, 2, 10002
+11, zubehör, 20, 3, 10002
+12, glas, 20, 3, 10003
+13, zusammensetzung, 20, 4, 10004
