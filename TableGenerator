@@ -51,9 +51,7 @@ Create Table produkt
 produktID int not null,
 produktname varchar(30),
 preis float,
-listenID int,
-Primary key (produktID),
-FOREIGN KEY (listenID) REFERENCES bestellliste(listenID)
+Primary key (produktID)
 );
 
 Create Table bestellliste_nm_produkt
