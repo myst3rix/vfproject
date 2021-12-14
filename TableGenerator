@@ -257,8 +257,8 @@ FOREIGN KEY (maschineID) REFERENCES maschine(maschineID)
 
 Create Table produkt_nm_maschine
 (
-maschineID int not null,
-produktID int not null,
+maschineID int,
+produktID int,
 Primary key (maschineID,produktID),
 FOREIGN KEY (maschineID) REFERENCES maschine(maschineID),
 FOREIGN KEY (produktID) REFERENCES produkt(produktID)
