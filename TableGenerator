@@ -29,11 +29,12 @@ Primary key (bestellID)
 
 Create Table bestellliste
 (
-listenID int not null,
-bestellmenge int,
 bestellID int,
-Primary key (listenID),
-FOREIGN KEY (bestellID) REFERENCES Bestellung(bestellID)
+produktID int,
+produktname varchar(50),
+bestellmenge int,
+FOREIGN KEY (produktID) REFERENCES produkt(produktID),
+FOREIGN KEY (bestellID) REFERENCES bestellung(bestellID)
 );
 
 Create Table lager
@@ -50,18 +51,7 @@ Create Table produkt
 produktID int not null,
 produktname varchar(30) not null,
 preis float,
-Primary key (produktID, produktname)
-);
-
-Create Table bestellliste_nm_produkt
-(
-produktID int,
-listenID int,
-produktname varchar(50)
-Primary key (produktID, listenID, produktname),
-FOREIGN KEY (listenID) REFERENCES bestellliste(listenID),
-FOREIGN KEY (produktID) REFERENCES produkt(produktID),
-FOREIGN KEY (produktname) REFERENCES produkt(produktname)
+Primary key (produktID)
 );
 
 Create Table rezeptur
