@@ -27,16 +27,6 @@ datum Date,
 Primary key (bestellID)
 );
 
-Create Table bestellliste
-(
-bestellID int,
-produktID int,
-produktname varchar(50),
-bestellmenge int,
-FOREIGN KEY (produktID) REFERENCES produkt(produktID),
-FOREIGN KEY (bestellID) REFERENCES bestellung(bestellID)
-);
-
 Create Table lager
 (
 lagID int not null,
@@ -52,6 +42,16 @@ produktID int not null,
 produktname varchar(30) not null,
 preis float,
 Primary key (produktID)
+);
+
+Create Table bestellliste
+(
+bestellID int,
+produktID int,
+produktname varchar(50),
+bestellmenge int,
+FOREIGN KEY (produktID) REFERENCES produkt(produktID),
+FOREIGN KEY (bestellID) REFERENCES bestellung(bestellID)
 );
 
 Create Table rezeptur
